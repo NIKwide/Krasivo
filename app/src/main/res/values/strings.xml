@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Krasivo</string>
+    <string name="logged_in_as">Вы вошли как: %s</string>
+</resources>

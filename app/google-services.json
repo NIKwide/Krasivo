@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392392980148",
+    "project_id": "basedateneco1-827c7",
+    "storage_bucket": "basedateneco1-827c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392392980148:android:d79059b9d65401378109e1",
+        "android_client_info": {
+          "package_name": "com.example.krasivo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392392980148-2vki29fu347irjl3rdfvlt7kcqunlj86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2fy8uoiFNII3NuaaMZogxwmaHZhHjA9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392392980148-2vki29fu347irjl3rdfvlt7kcqunlj86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

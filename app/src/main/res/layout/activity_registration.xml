@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+ >
+
+    <EditText
+        android:id="@+id/edLogin"
+        android:layout_width="250dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="100dp"
+        android:hint="Email"
+        android:labelFor="@+id/edLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edPassword"
+        android:layout_width="250dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="60dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:labelFor="@+id/edPassword"
+        app:layout_constraintEnd_toEndOf="@+id/edLogin"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/edLogin"
+        app:layout_constraintTop_toBottomOf="@+id/edLogin" />
+
+    <Button
+        android:id="@+id/bSignUp"
+        android:layout_width="220dp"
+        android:layout_height="62dp"
+        android:text="Зарегистрироваться"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edPassword"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/edPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edPassword"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="220dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="208dp"
+        android:onClick="onBackPressed"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bSignUp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/bSignUp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
