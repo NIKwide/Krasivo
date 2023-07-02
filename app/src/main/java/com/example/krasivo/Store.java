@@ -112,16 +112,16 @@ public class Store extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.catalog);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        myRef1 = database.getReference("Store").child("Catalog1");
+        myRef1 = database.getReference("Store");
         myRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<Catalog> CatalogList = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String catalogImage = dataSnapshot.child("Image").getValue(String.class);
-                    String CatalogName = dataSnapshot.child("Name").getValue(String.class);
-                    Catalog catalog = new Catalog(CatalogName, catalogImage);
+                    String catalogImage = snapshot.child("Image").getValue(String.class);
+                    String catalogName = snapshot.child("Name").getValue(String.class);
+                    Catalog catalog = new Catalog(catalogName, catalogImage);
                     CatalogList.add(catalog);
                 }
 
