@@ -36,14 +36,18 @@ public class Store extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ProductAdapter adapter;
+    private CatalogAdapter Adapter;
     private List<Product> productList = new ArrayList<>();
+    private List<Catalog> CatalogList = new ArrayList<>();
 
+    private CatalogAdapter CatalogAdapter;
     private Button bStart, bSignUp, bSignIn, signOut;
     private TextView tvUserName;
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    private DatabaseReference myRef1;
     private Button bCart;
     private Button bFavorites;
 
@@ -52,12 +56,18 @@ public class Store extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
         init();
+        recyclerView = findViewById(R.id.product_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void init() {
         recyclerView = findViewById(R.id.product_list);
         adapter = new ProductAdapter(productList);
         recyclerView.setAdapter(adapter);
+
+        recyclerView = findViewById(R.id.catalog);
+        CatalogAdapter = new CatalogAdapter(CatalogList);
+        recyclerView.setAdapter(CatalogAdapter);
         signOut = findViewById(R.id.bSignOut);
         tvUserName = findViewById(R.id.tvUserEmail);
         bStart = findViewById(R.id.bStart);
@@ -66,8 +76,6 @@ public class Store extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         recyclerView = findViewById(R.id.product_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductAdapter(productList);
-        recyclerView.setAdapter(adapter);
         sharedPreferences = getSharedPreferences("my_prefs", MODE_PRIVATE);
         bCart = findViewById(R.id.bCart);
         bFavorites = findViewById(R.id.bFavorites);
@@ -104,6 +112,30 @@ public class Store extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.catalog);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+        myRef1 = database.getReference("Store").child("Catalog1");
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Catalog> CatalogList = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String catalogImage = dataSnapshot.child("Image").getValue(String.class);
+                    String CatalogName = dataSnapshot.child("Name").getValue(String.class);
+                    Catalog catalog = new Catalog(CatalogName, catalogImage);
+                    CatalogList.add(catalog);
+                }
+
+                RecyclerView recyclerView = findViewById(R.id.catalog);
+                CatalogAdapter Adapter = new CatalogAdapter(CatalogList);
+                recyclerView.setAdapter(Adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Обработка ошибок
+            }
+        });
+
     }
 
     @Override
