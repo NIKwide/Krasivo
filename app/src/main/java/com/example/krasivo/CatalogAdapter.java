@@ -1,6 +1,7 @@
 package com.example.krasivo;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,11 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ProductDetailsActivity.class);
-                intent.putExtra("catalog_name", product.getName());
-                intent.putExtra("catalog_image", product.getImage());
+                Intent intent = new Intent(v.getContext(), CatalogDetailsActivity.class);
+                intent.putExtra("catalog_name", product.getName()); // передача названия каталога в Intent
+                intent.putExtra("catalog_image", product.getImage()); // передача изображения каталога в Intent
+                Log.d("CatalogAdapter", "catalog_name: " + product.getName());
+                Log.d("CatalogAdapter", "catalog_image: " + product.getImage());
                 v.getContext().startActivity(intent);
             }
         });
